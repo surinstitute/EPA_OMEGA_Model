@@ -250,6 +250,9 @@ def run_compliance_id(compliance_id, pass_num, cumulative_battery_GWh, credit_ba
     from producer.vehicle_annual_data import VehicleAnnualData
     from producer.manufacturer_annual_data import ManufacturerAnnualData
     from context.new_vehicle_market import NewVehicleMarket
+    import common.file_io as file_io
+
+    file_io.validate_folder(omega_globals.options.output_folder)
 
     if omega_globals.options.multiprocessing and pass_num > 0:
         omega_log.init_logfile(compliance_id)

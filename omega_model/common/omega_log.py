@@ -169,6 +169,12 @@ def logwrite(message, echo_console=True, terminator='\n'):
         terminator (str): end of message terminator, default is newline (``\\n``)
 
     """
+    import os
+
+    log_parent = os.path.dirname(omega_globals.options.logfilename)
+    if log_parent:
+        os.makedirs(log_parent, exist_ok=True)
+
     with open(omega_globals.options.logfilename, 'a') as log:
         if type(message) is list:
             for m in message:

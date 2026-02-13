@@ -17,6 +17,10 @@ print('loading omega version %s' % code_version)
 
 import os, sys
 
+path = os.path.dirname(os.path.abspath(__file__))
+if path not in sys.path:
+    sys.path.insert(0, path)
+
 if 'darwin' in sys.platform:
     os.environ['QT_MAC_WANTS_LAYER'] = '1'  # for pyqtgraph on MacOS
 

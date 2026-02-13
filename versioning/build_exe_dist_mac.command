@@ -1,6 +1,9 @@
 #! /bin/zsh
 
-cd ..
+SCRIPT_DIR="${0:A:h}"
+REPO_ROOT="${SCRIPT_DIR:h}"
+
+cd "$REPO_ROOT"
 
 # build executable
 
@@ -14,8 +17,9 @@ pyinstaller exe_entry.py \
 
 # cleanup
 
-mv *.spec versioning
-rm -R __pycache__
-rm -R build
+if ls ./*.spec >/dev/null 2>&1; then
+    mv ./*.spec "$SCRIPT_DIR"
+fi
+rm -rf __pycache__ build
 
-cd versioning
+cd "$SCRIPT_DIR"

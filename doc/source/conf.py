@@ -36,11 +36,53 @@ release = '2.5.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
     'sphinx.ext.autosummary',
     'sphinx.ext.viewcode',
     'sphinx.ext.todo',
     'sphinx.ext.imgmath'
+]
+
+autodoc_mock_imports = [
+    'numpy',
+    'matplotlib',
+    'pandas',
+    'scipy',
+    'treelib',
+    'parquet',
+    'fastparquet',
+    'dispy',
+    'pycos',
+    'psutil',
+    'netifaces',
+    'pyDOE2',
+    'openpyxl',
+    'PySide2',
+    'PySide6',
+    'multitimer',
+    'playsound',
+    'yaml',
+]
+
+suppress_warnings = [
+    'autodoc.import_object',
+    'ref.any',
+    'ref.python',
+]
+
+nitpick_ignore = [
+    ('py:class', 'DataFrame'),
+    ('py:class', 'Series'),
+    ('py:class', 'strs'),
+    ('py:class', 'ints'),
+    ('py:class', 'floats'),
+    ('py:class', 'bools'),
+    ('py:class', 'numeric'),
+]
+
+nitpick_ignore_regex = [
+    (r'py:class', r'^[a-z_]+s?$'),
 ]
 
 autodoc_default_options = {
@@ -63,8 +105,8 @@ exclude_patterns = ['*setup*', '*exe_entry*']
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
-html_css_files = [path + '/_static/css/omega_rtd_theme.css']  # for local build
-html_style = 'css/omega_rtd_theme.css'  # for readthedocs build
+html_static_path = ['_static']
+html_css_files = ['css/omega_rtd_theme.css']
 html_logo = path + '/_static/OMEGA_logo_transparent.png'
 numfig = True
 todo_include_todos = True

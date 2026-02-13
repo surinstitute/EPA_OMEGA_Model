@@ -8,13 +8,13 @@ Installation
 
 **Typical Install**
 
-Install required packages:
+Install required packages with uv:
 
-    ``pip install -r requirements.txt``
+    ``uv sync``
 
 Install optional developer packages:
 
-    ``pip install -r requirements-dev.txt``
+    ``uv sync --extra dev``
 
 See the requirements files for further information.
 
@@ -23,10 +23,27 @@ Usage
 
 To run from the command line with default options::
 
-    python -m usepa_omega2
+    uv run python -m usepa_omega2
 
 Documentation
 -------------
+
+To build documentation locally with uv::
+
+    uv run sphinx-build -b singlehtml doc/source doc/build/singlehtml
+
+To run a strict docs check (warnings as errors)::
+
+    uv run sphinx-build -W -n -b singlehtml doc/source doc/build/singlehtml_strict
+
+To preview generated docs locally::
+
+    cd doc/build
+    python3 -m http.server 8000
+
+Then open:
+
+    http://127.0.0.1:8000/singlehtml/index.html
 
 For more information, please see:
 

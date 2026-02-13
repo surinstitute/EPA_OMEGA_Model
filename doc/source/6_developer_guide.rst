@@ -54,12 +54,17 @@ In addition to Python, OMEGA requires several publicly available Python packages
 Simple Install
 ^^^^^^^^^^^^^^
 
-The simplest way to install the packages is to use ``pip``, the package installer for Python.  Sometimes there is an updated version of ``pip`` available.  The command-line code below updates ``pip`` and installs the packages detailed in ``requirements.txt``.
+The simplest way to install the packages is to use the project-managed environment with `uv`.  `uv` creates and activates an isolated virtual environment and installs the runtime dependencies for you.
 
 ::
 
-    python -m pip install --upgrade pip setuptools
-    pip install -r requirements.txt
+    uv sync
+
+To install the optional developer packages (testing, Sphinx, build tools) use the `dev` extra:
+
+::
+
+    uv sync --extra dev
 
 
 Running From Source Code
@@ -80,6 +85,10 @@ There are at least four common ways to run OMEGA:
 
 ::
 
+    # recommended (uses the project's uv-managed venv)
+    uv run python omega_model/omega.py
+
+    # alternative: run with the active Python interpreter
     python omega_model/omega.py
 
 Will produce output such as:
@@ -119,6 +128,10 @@ The primary use case for running ``omega.py`` directly is just to confirm the in
 
 ::
 
+    # recommended (uses the project's uv-managed venv)
+    uv run python omega_gui/omega_gui.py
+
+    # alternative: run with the active Python interpreter
     python omega_gui/omega_gui.py
 
 ----
